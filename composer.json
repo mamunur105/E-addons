@@ -1,0 +1,25 @@
+{
+	"name": "codexin/plugin-boilerplate",
+	"description": "WordPress Plguin's PluginBoilerplate.",
+	"type": "wordpress-plugin",
+	"keywords": [ "wordpress", "plugin" ],
+	"homepage": "http://codexin.com/",
+	"license": "GPL-2.0+",
+	"authors": [
+		{
+			"name": "Codexins",
+			"email": "info@codexin.com",
+			"homepage": "http://codexin.com/"
+		}
+	],
+	"support": {
+		"issues": "https://github.com/codexintech/PluginBoilerplate/issues",
+		"source": "https://github.com/codexintech/PluginBoilerplate/"
+	},
+	"autoload": {
+		"psr-4": {
+			"Codexin\\PluginBoilerplate\\": "lib/"
+		}
+	},
+	"require": {}
+}
