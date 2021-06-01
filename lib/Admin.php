@@ -3,14 +3,14 @@
 /**
  * The dashboard-specific functionality of the plugin.
  *
- * @link       http://codexin.com
+ * @link       https://github.com/mamunur105/E-addons
  * @since      1.0.0
  *
  * @package    PluginBoilerplate
  * @subpackage PluginBoilerplate/admin
  */
 
-namespace Codexin\PluginBoilerplate;
+namespace EM\Eaddons;
 
 /**
  * The dashboard-specific functionality of the plugin.
@@ -20,7 +20,7 @@ namespace Codexin\PluginBoilerplate;
  *
  * @package    PluginBoilerplate
  * @subpackage PluginBoilerplate/admin
- * @author     Your Name <email@codexin.com>
+ * @author     Your Name <rmamunur105@gmail.com>
  */
 class Admin {
 
@@ -117,6 +117,14 @@ class Admin {
 			array( 'jquery' ),
 			$this->plugin->get_version(),
 			false
+		);
+		wp_localize_script(
+			$this->plugin->get_plugin_name(),
+			'Eaddons_script',
+			array(
+				'admin_ajax' => admin_url( 'admin-ajax.php' ),
+				'ajx_nonce'  => wp_create_nonce( 'ajax-nonce' ),
+			)
 		);
 
 	}

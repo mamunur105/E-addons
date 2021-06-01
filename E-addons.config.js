@@ -4,13 +4,13 @@
  * 1. Edit the variables as per your project requirements.
  * 2. In paths you can add <<glob or array of globs>>.
  *
- * @package Cdxn_Gallery
+ * @package E-addons
  */
 
 module.exports = {
 	// Project options.
-	projectName    : 'PluginBoilerplate',
-	projectURL     : 'http://dev.test/',              // Local project URL of your already running WordPress site.
+	projectName    : 'E-addons',
+	projectURL     : 'https://github.com/mamunur105/E-addons',              // Local project URL of your already running WordPress site.
 	productURL     : './',                      // Theme/Plugin URL. Leave it like it is, since our gulpfile.js lives in the root folder.
 	browserAutoOpen: false,
 	injectChanges  : true,
@@ -69,7 +69,7 @@ module.exports = {
 		'!**/log.txt',
 		'!node_modules/**/*',
 		'!dist/**/*',
-		'!codexin.config.js',
+		'!E-addons.config.js',
 		'!gulpfile.js',
 		'!src/images/**/*',
 		'!src/scripts/**/*',
@@ -93,8 +93,8 @@ module.exports = {
 	translationDestination: './languages',                      // Where to save the translation files.
 	packageName           : 'Photo gallery',                    // Package name.
 	bugReport             : 'https://github.com/mamunur105/E-addons/',             // Where can users report bugs.
-	lastTranslator        : 'Codexins <info@codexin.com>',      // Last translator Email ID.
-	team                  : 'Codexins <support@codexin.com>',   // Team's Email ID.
+	lastTranslator        : '<rmamunur105@gmail.com>',      // Last translator Email ID.
+	team                  : '<rmamunur105@gmail.com>',   // Team's Email ID.
 
 	// Browsers you care about for autoprefixing. Browserlist https://github.com/ai/browserslist
 	// The following list is set as per WordPress requirements. Though, Feel free to change.

@@ -6,16 +6,16 @@
  * A class definition that includes attributes and functions used across both the
  * public-facing side of the site and the dashboard.
  *
- * @link       http://codexin.com
+ * @link       https://github.com/mamunur105/E-addons
  * @since      1.0.0
  *
- * @package    Cxn_Plugin
- * @subpackage Cxn_Plugin/includes
+ * @package    EM\Eaddons
+ * @subpackage EM\Eaddons/includes
  */
 
-namespace Codexin\PluginBoilerplate;
+namespace EM\Eaddons;
 
-use Codexin\PluginBoilerplate\Admin\Notice;
+use EM\Eaddons\Admin\Notice;
 /**
  * The core plugin class.
  *
@@ -26,9 +26,9 @@ use Codexin\PluginBoilerplate\Admin\Notice;
  * version of the plugin.
  *
  * @since      1.0.0
- * @package    Cxn_Plugin
- * @subpackage Cxn_Plugin/includes
- * @author     Your Name <email@codexin.com>
+ * @package    EM\Eaddons
+ * @subpackage EM\Eaddons/includes
+ * @author     Your Name <email@Eaddons.com>
  */
 class Plugin {
 
@@ -38,7 +38,7 @@ class Plugin {
 	 *
 	 * @since    1.0.0
 	 * @access   protected
-	 * @var      Cxn_Plugin_Loader    $loader    Maintains and registers all hooks for the plugin.
+	 * @var      EM\Eaddons_Loader    $loader    Maintains and registers all hooks for the plugin.
 	 */
 	protected $loader;
 
@@ -69,14 +69,14 @@ class Plugin {
 	 * @since    1.0.0
 	 */
 	public function __construct() {
-		if ( defined( 'CDXN_PLUGIN_VERSION' ) ) {
-			$this->version = CDXN_PLUGIN_VERSION;
+		if ( defined( 'Eaddons_PLUGIN_VERSION' ) ) {
+			$this->version = Eaddons_PLUGIN_VERSION;
 		} else {
 			$this->version = '1.0.0';
 		}
 
-		if ( defined( 'CDXN_PLUGIN_NAME' ) ) {
-			$this->pluginname = CDXN_PLUGIN_NAME;
+		if ( defined( 'Eaddons_PLUGIN_NAME' ) ) {
+			$this->pluginname = Eaddons_PLUGIN_NAME;
 		} else {
 			$this->pluginname = 'PluginBoilerplate';
 		}
@@ -163,7 +163,7 @@ class Plugin {
 	 * The reference to the class that orchestrates the hooks with the plugin.
 	 *
 	 * @since     1.0.0
-	 * @return    Cxn_Plugin_Loader    Orchestrates the hooks of the plugin.
+	 * @return    EM\Eaddons_Loader    Orchestrates the hooks of the plugin.
 	 */
 	public function get_loader() {
 		return $this->loader;

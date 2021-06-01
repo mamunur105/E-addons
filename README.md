@@ -1,3 +1,3 @@
-# WordPress Plugin Boilerplate
+# E-addons
 1. `composer dumpautoload -o`
 2. `npm install`

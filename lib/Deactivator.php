@@ -3,14 +3,14 @@
 /**
  * Fired during plugin deactivation
  *
- * @link       http://codexin.com
+ * @link       https://github.com/mamunur105/E-addons
  * @since      1.0.0
  *
- * @package    Cxn_Plugin
- * @subpackage Cxn_Plugin/includes
+ * @package    EM\Eaddons
+ * @subpackage EM\Eaddons/includes
  */
 
-namespace Codexin\PluginBoilerplate;
+namespace EM\Eaddons;
 
 /**
  * Fired during plugin deactivation.
@@ -18,9 +18,9 @@ namespace Codexin\PluginBoilerplate;
  * This class defines all code necessary to run during the plugin's deactivation.
  *
  * @since      1.0.0
- * @package    Cxn_Plugin
- * @subpackage Cxn_Plugin/includes
- * @author     Your Name <email@codexin.com>
+ * @package    EM\Eaddons
+ * @subpackage EM\Eaddons/includes
+ * @author     Your Name <rmamunur105@gmail.com>
  */
 class Deactivator {
 

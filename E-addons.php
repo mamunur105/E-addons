@@ -15,9 +15,9 @@
  * @wordpress-plugin
  * Plugin Name:       E-addons
  * Plugin URI:        https://github.com/mamunur105/E-addons/
- * Description:       WordPress Cxn Plugin.
+ * Description:       WordPress E-addons Plugin.
  * Version:           1.0.0
- * Author:            Codexin Technologies
+ * Author:            Mamunur Rashid
  * Author URI:        https://github.com/mamunur105/E-addons/
  * License:           GPL-2.0+
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
@@ -38,13 +38,13 @@ if ( ! defined( 'WPINC' ) ) {
  * The code that runs during plugin activation.
  * This action is documented in lib/Activator.php
  */
-\register_activation_hook( __FILE__, '\Codexin\PluginBoilerplate\Activator::activate' );
+\register_activation_hook( __FILE__, '\EM\Eaddons\Activator::activate' );
 
 /**
  * The code that runs during plugin deactivation.
  * This action is documented in lib/Deactivator.php
  */
-\register_deactivation_hook( __FILE__, '\Codexin\PluginBoilerplate\Deactivator::deactivate' );
+\register_deactivation_hook( __FILE__, '\EM\Eaddons\Deactivator::deactivate' );
 
 /**
  * Begins execution of the plugin.
@@ -54,12 +54,12 @@ if ( ! defined( 'WPINC' ) ) {
 \add_action(
 	'plugins_loaded',
 	function () {
-		define( 'CDXN_PLUGIN_VERSION', '1.0.0' );
-		define( 'CDXN_PLUGIN_NAME', 'PluginBoilerplate' );
-		define( 'CDXN_PLUGIN_PREFIX', 'cdxn_mlh' );
-		define( 'CDXN_PLUGIN_DIR', __DIR__ );
-		define( 'CDXN_PLUGIN_FILE', __FILE__ );
-		$plugin = new \Codexin\PluginBoilerplate\Plugin();
+		define( 'Eaddons_PLUGIN_VERSION', '1.0.0' );
+		define( 'Eaddons_PLUGIN_NAME', 'E-addons' );
+		define( 'Eaddons_PLUGIN_PREFIX', 'Eaddons' );
+		define( 'Eaddons_PLUGIN_DIR', __DIR__ );
+		define( 'Eaddons_PLUGIN_FILE', __FILE__ );
+		$plugin = new \EM\Eaddons\Plugin();
 		$plugin->run();
 	}
 );

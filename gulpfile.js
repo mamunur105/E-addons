@@ -15,15 +15,15 @@
  *      8. InjectCSS instead of browser page reload.
  *      9. Generates .pot file for i18n and l10n.
  *
- * @author S.M. Rafiz <https://github.com/smrafiz>
+ * @author Mamunur Rashid <https://github.com/mamunur105/>
  * @version 1.0.0
  */
 
 /**
- * Load Codexin Configuration.
+ * Load E-addons Configuration.
  *
  */
-const config = require('./codexin.config.js');
+const config = require('./E-addons.config.js');
 
 /**
  * Load Plugins.

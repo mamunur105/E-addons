@@ -3,14 +3,14 @@
 /**
  * Register all actions and filters for the plugin
  *
- * @link       http://codexin.com
+ * @link       https://github.com/mamunur105/E-addons
  * @since      1.0.0
  *
- * @package    Cxn_Plugin
- * @subpackage Cxn_Plugin/includes
+ * @package    EM\Eaddons
+ * @subpackage EM\Eaddons/includes
  */
 
-namespace Codexin\PluginBoilerplate;
+namespace EM\Eaddons;
 
 /**
  * Register all actions and filters for the plugin.
@@ -19,9 +19,9 @@ namespace Codexin\PluginBoilerplate;
  * the plugin, and register them with the WordPress API. Call the
  * run function to execute the list of actions and filters.
  *
- * @package    Cxn_Plugin
- * @subpackage Cxn_Plugin/includes
- * @author     Your Name <email@codexin.com>
+ * @package    EM\Eaddons
+ * @subpackage EM\Eaddons/includes
+ * @author     Your Name <rmamunur105@gmail.com>
  */
 class Loader {
 

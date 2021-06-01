@@ -1,24 +1,24 @@
 {
-	"name": "codexin/plugin-boilerplate",
-	"description": "WordPress Plguin's PluginBoilerplate.",
+	"name": "addons/e-addons",
+	"description": "WordPress Plguin's E-addons.",
 	"type": "wordpress-plugin",
 	"keywords": [ "wordpress", "plugin" ],
-	"homepage": "http://codexin.com/",
+	"homepage": "https://github.com/mamunur105",
 	"license": "GPL-2.0+",
 	"authors": [
 		{
-			"name": "Codexins",
-			"email": "info@codexin.com",
-			"homepage": "http://codexin.com/"
+			"name": "mamunur105",
+			"email": "rmamunur105@gmail.com",
+			"homepage": "https://github.com/mamunur105/"
 		}
 	],
 	"support": {
-		"issues": "https://github.com/codexintech/PluginBoilerplate/issues",
-		"source": "https://github.com/codexintech/PluginBoilerplate/"
+		"issues": "https://github.com/mamunur105/E-addons/issues",
+		"source": "https://github.com/mamunur105/E-addons/"
 	},
 	"autoload": {
 		"psr-4": {
-			"Codexin\\PluginBoilerplate\\": "lib/"
+			"EM\\Eaddons\\": "lib/"
 		}
 	},
 	"require": {}

@@ -2,14 +2,14 @@
 /**
  * Settings Page functionality of the plugin.
  *
- * @link       http://codexin.com
+ * @link       https://github.com/mamunur105/E-addons
  * @since      1.0.0
  *
- * @package    Cdxn_Plugin
- * @subpackage Cdxn_Plugin/admin
+ * @package    Eaddons_Plugin
+ * @subpackage Eaddons_Plugin/admin
  */
 
-namespace Codexin\PluginBoilerplate\Admin;
+namespace EM\Eaddons\Admin;
 
 // Do not allow directly accessing this file.
 if ( ! defined( 'ABSPATH' ) ) {
@@ -31,16 +31,16 @@ class Notice {
 			return;
 		}
 		ob_start();
-		$activation_time  = get_option( CDXN_PLUGIN_PREFIX . '_plugin_activation_time' );
+		$activation_time  = get_option( Eaddons_PLUGIN_PREFIX . '_plugin_activation_time' );
 		$notice_available = strtotime( '+7 day', $activation_time );
 
 		if ( true || $activation_time && $notice_available < time() ) {
 			$using               = human_time_diff( $activation_time, time() );
 			$display_rate_notice = $this->display_notice( 'rate-the-plugin' );
 			if ( true || $display_rate_notice ) {
-				$plugin_data = get_plugin_data( CDXN_PLUGIN_FILE );
+				$plugin_data = get_plugin_data( Eaddons_PLUGIN_FILE );
 				?>
-				<div class="cdxn-mlh-notice notice notice-success is-dismissible" data-notice="rate-the-plugin">
+				<div class="Eaddons-mlh-notice notice notice-success is-dismissible" data-notice="rate-the-plugin">
 					<p>
 					<?php
 						/* translators: %1$s: For using time */
@@ -49,19 +49,19 @@ class Notice {
 					</p>
 					<p>
 						<?php
-							$review_url = 'https://wordpress.org/support/plugin/' . basename( CDXN_PLUGIN_DIR ) . '/reviews/#new-post';
+							$review_url = 'https://wordpress.org/support/plugin/' . basename( Eaddons_PLUGIN_DIR ) . '/reviews/#new-post';
 						?>
 						<a class="rate-link button-primary" href="<?php echo esc_url( $review_url ); ?>" target="_blank"><?php esc_html_e( 'Rate the plugin', 'PluginBoilerplate' ); ?> </a>
-						<button type="button"  data-dismiss="remind-me-later" class="cdxn-mlh-notice-action"><?php esc_html_e( 'Remind me later', 'PluginBoilerplate' ); ?> </button>
-						<button type="button" data-dismiss="dont-show-again" class="cdxn-mlh-notice-action"><?php esc_html_e( 'Don\'t show again', 'PluginBoilerplate' ); ?> </button>
-						<button type="button" data-dismiss="i-already-did" class="cdxn-mlh-notice-action"><?php esc_html_e( 'I already did', 'PluginBoilerplate' ); ?> </button>
+						<button type="button"  data-dismiss="remind-me-later" class="Eaddons-mlh-notice-action"><?php esc_html_e( 'Remind me later', 'PluginBoilerplate' ); ?> </button>
+						<button type="button" data-dismiss="dont-show-again" class="Eaddons-mlh-notice-action"><?php esc_html_e( 'Don\'t show again', 'PluginBoilerplate' ); ?> </button>
+						<button type="button" data-dismiss="i-already-did" class="Eaddons-mlh-notice-action"><?php esc_html_e( 'I already did', 'PluginBoilerplate' ); ?> </button>
 					</p>
 				</div>
 				<?php
 			}
 		}// activation time
 		$default = \ob_get_clean();
-		echo wp_kses_post( apply_filters( 'cdxn_mlh_notice', $default ) );
+		echo wp_kses_post( apply_filters( 'Eaddons_mlh_notice', $default ) );
 	}
 
 
@@ -73,7 +73,7 @@ class Notice {
 	 */
 	private function display_notice( $notice_type ) {
 		$user_id      = get_current_user_id();
-		$admin_notice = get_user_meta( $user_id, CDXN_PLUGIN_PREFIX . '_rate_the_plugin', true );
+		$admin_notice = get_user_meta( $user_id, Eaddons_PLUGIN_PREFIX . '_rate_the_plugin', true );
 		$admin_notice = maybe_unserialize( $admin_notice );
 		if ( isset( $admin_notice['notice_type'] ) && $notice_type === $admin_notice['notice_type'] ) {
 			$notice_expire = isset( $admin_notice['show_again_time'] ) ? $admin_notice['show_again_time'] : 0;
@@ -93,7 +93,7 @@ class Notice {
 	 */
 	public function rate_the_plugin_action() {
 
-		if ( isset( $_POST['cx_nonce'] ) && ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['cx_nonce'] ) ), 'ajax-nonce' ) ) {
+		if ( isset( $_POST['eaddons_nonce'] ) && ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['eaddons_nonce'] ) ), 'ajax-nonce' ) ) {
 			wp_send_json( boolval( 0 ) );
 		}
 		$user_id       = get_current_user_id();
@@ -109,7 +109,7 @@ class Notice {
 			$show_again = strtotime( '+2 week', time() );
 		}
 
-		$rate_cdxn_mlh = maybe_serialize(
+		$rate_Eaddons_mlh = maybe_serialize(
 			array(
 				'dismiss_type'    => $dismiss_type,
 				'notice_type'     => $notice_type,
@@ -117,7 +117,7 @@ class Notice {
 				'action'          => $notice_action,
 			)
 		);
-		$update        = update_user_meta( $user_id, CDXN_MLH_PREFIX . '_rate_the_plugin', $rate_cdxn_mlh );
+		$update        = update_user_meta( $user_id, Eaddons_PLUGIN_PREFIX . '_rate_the_plugin', $rate_Eaddons_mlh );
 		wp_send_json( boolval( $update ) );
 
 	}

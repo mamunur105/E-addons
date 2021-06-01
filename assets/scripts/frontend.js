@@ -36,7 +36,7 @@
       _n = _wp$i18n._n,
       _nx = _wp$i18n._nx;
   $(window).load(function () {
-    var data = __('I am frontend', 'cxn-plugin');
+    var data = __('I am frontend', 'E-addons');
 
     console.log(data);
   });

@@ -2,14 +2,14 @@
 /**
  * ALl helpers function's are here
  *
- * @link       http://codexin.com
+ * @link       https://github.com/mamunur105/E-addons
  * @since      1.0.0
  *
- * @package    Cdxn_Plugin
- * @subpackage Cdxn_Plugin/admin
+ * @package    Eaddons_Plugin
+ * @subpackage Eaddons_Plugin/admin
  */
 
-namespace Codexin\PluginBoilerplate\Common;
+namespace EM\Eaddons\Common;
 
 // Do not allow directly accessing this file.
 if ( ! defined( 'ABSPATH' ) ) {

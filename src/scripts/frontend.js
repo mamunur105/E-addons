@@ -31,7 +31,7 @@
 	const { __, _x, _n, _nx } = wp.i18n;
 
 	$(window).load(function() {
-		var data = 	__( 'I am frontend', 'cxn-plugin' );
+		var data = 	__( 'I am frontend', 'E-addons' );
 		console.log(data);
 	});
 })(jQuery);

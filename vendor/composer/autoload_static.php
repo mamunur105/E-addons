@@ -7,31 +7,20 @@ namespace Composer\Autoload;
 class ComposerStaticInita58c256ee3a99091df5cde75748e7bae
 {
     public static $prefixLengthsPsr4 = array (
-        'C' => 
+        'E' => 
         array (
-            'Codexin\\PluginBoilerplate\\' => 26,
+            'EM\\Eaddons\\' => 11,
         ),
     );
 
     public static $prefixDirsPsr4 = array (
-        'Codexin\\PluginBoilerplate\\' => 
+        'EM\\Eaddons\\' => 
         array (
             0 => __DIR__ . '/../..' . '/lib',
         ),
     );
 
     public static $classMap = array (
-        'Codexin\\PluginBoilerplate\\Activator' => __DIR__ . '/../..' . '/lib/Activator.php',
-        'Codexin\\PluginBoilerplate\\Admin' => __DIR__ . '/../..' . '/lib/Admin.php',
-        'Codexin\\PluginBoilerplate\\Admin\\Custom_Post_Type' => __DIR__ . '/../..' . '/lib/Admin/Custom_Post_Type.php',
-        'Codexin\\PluginBoilerplate\\Admin\\Metabox' => __DIR__ . '/../..' . '/lib/Admin/Metabox.php',
-        'Codexin\\PluginBoilerplate\\Admin\\Notice' => __DIR__ . '/../..' . '/lib/Admin/Notice.php',
-        'Codexin\\PluginBoilerplate\\Admin\\Settings' => __DIR__ . '/../..' . '/lib/Admin/Settings.php',
-        'Codexin\\PluginBoilerplate\\Deactivator' => __DIR__ . '/../..' . '/lib/Deactivator.php',
-        'Codexin\\PluginBoilerplate\\Frontend' => __DIR__ . '/../..' . '/lib/Frontend.php',
-        'Codexin\\PluginBoilerplate\\I18n' => __DIR__ . '/../..' . '/lib/I18n.php',
-        'Codexin\\PluginBoilerplate\\Loader' => __DIR__ . '/../..' . '/lib/Loader.php',
-        'Codexin\\PluginBoilerplate\\Plugin' => __DIR__ . '/../..' . '/lib/Plugin.php',
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
     );
 

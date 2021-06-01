@@ -2,14 +2,14 @@
 /**
  * Custom Post Type functionality of the plugin.
  *
- * @link       http://codexin.com
+ * @link       https://github.com/mamunur105/E-addons
  * @since      1.0.0
  *
- * @package    Cxn_Plugin
- * @subpackage Cxn_Plugin/admin
+ * @package    EM\Eaddons
+ * @subpackage EM\Eaddons/admin
  */
 
-namespace Codexin\PluginBoilerplate\Admin;
+namespace EM\Eaddons\Admin;
 
 class Custom_Post_Type {
 

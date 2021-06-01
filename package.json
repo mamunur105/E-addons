@@ -1,8 +1,8 @@
 {
-	"name": "cxn-plugin",
+	"name": "E-addons-plugin",
 	"version": "1.0.0",
-	"description": "WordPress Cxn Plugin",
-	"main": "codexin.config.js",
+	"description": "WordPress E-addons Plugin",
+	"main": "E-addons.config.js",
 	"dependencies": {
 		"@babel/core": "^7.12.3",
 		"@babel/preset-env": "^7.12.1",
@@ -47,12 +47,12 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/codexintech/PluginBoilerplate.git"
+		"url": "https://github.com/mamunur105/E-addons.git"
 	},
-	"author": "Codexins",
+	"author": "mamunur105",
 	"license": "ISC",
 	"bugs": {
-		"url": "https://github.com/codexintech/PluginBoilerplate/issues"
+		"url": "https://github.com/mamunur105/E-addons/issues"
 	},
-	"homepage": "https://github.com/codexintech/PluginBoilerplate"
+	"homepage": "https://github.com/mamunur105/E-addons"
 }

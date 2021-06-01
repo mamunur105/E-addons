@@ -6,5 +6,5 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
-    'Codexin\\PluginBoilerplate\\' => array($baseDir . '/lib'),
+    'EM\\Eaddons\\' => array($baseDir . '/lib'),
 );

@@ -3,14 +3,14 @@
 /**
  * Fired during plugin activation
  *
- * @link       http://codexin.com
+ * @link       https://github.com/mamunur105/E-addons
  * @since      1.0.0
  *
  * @package    PluginBoilerplate
  * @subpackage PluginBoilerplate/includes
  */
 
-namespace Codexin\PluginBoilerplate;
+namespace EM\Eaddons;
 
 /**
  * Fired during plugin activation.
@@ -20,7 +20,7 @@ namespace Codexin\PluginBoilerplate;
  * @since      1.0.0
  * @package    PluginBoilerplate
  * @subpackage PluginBoilerplate/includes
- * @author     Your Name <email@codexin.com>
+ * @author     Your Name <rmamunur105@gmail.com>
  */
 class Activator {
 
@@ -32,7 +32,7 @@ class Activator {
 	 * @since    1.0.0
 	 */
 	public static function activate() {
-		update_option( 'cdxn_mlh_plugin_activation_time', time() );
+		update_option( 'Eaddons_mlh_plugin_activation_time', time() );
 	}
 
 }

@@ -6,14 +6,14 @@
  * Loads and defines the internationalization files for this plugin
  * so that it is ready for translation.
  *
- * @link       http://codexin.com
+ * @link       https://github.com/mamunur105/E-addons
  * @since      1.0.0
  *
- * @package    Cxn_Plugin
- * @subpackage Cxn_Plugin/includes
+ * @package    EM\Eaddons
+ * @subpackage EM\Eaddons/includes
  */
 
-namespace Codexin\PluginBoilerplate;
+namespace EM\Eaddons;
 
 /**
  * Define the internationalization functionality.
@@ -22,9 +22,9 @@ namespace Codexin\PluginBoilerplate;
  * so that it is ready for translation.
  *
  * @since      1.0.0
- * @package    Cxn_Plugin
- * @subpackage Cxn_Plugin/includes
- * @author     Your Name <email@codexin.com>
+ * @package    EM\Eaddons
+ * @subpackage EM\Eaddons/includes
+ * @author     Your Name <rmamunur105@gmail.com>
  */
 class I18n {
 

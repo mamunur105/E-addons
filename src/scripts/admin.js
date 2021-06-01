@@ -33,10 +33,10 @@
 		 * Admin code for dismissing notifications.
 		 *
 		 */
-		$('.cdxn-mlh-notice').on('click', '.notice-dismiss, .cdxn-mlh-notice-action', function() {
+		$('.Eaddons-mlh-notice').on('click', '.notice-dismiss, .Eaddons-mlh-notice-action', function() {
 			let $this = $(this);
-			let admin_ajax = cdxn_mlh_script.admin_ajax;
-			let parents = $(this).parents('.cdxn-mlh-notice');
+			let admin_ajax = Eaddons_script.admin_ajax;
+			let parents = $(this).parents('.Eaddons-mlh-notice');
 			let dismiss_type = $(this).data('dismiss');
 			let notice_type = parents.data('notice');
 			if (!dismiss_type) {
@@ -46,7 +46,7 @@
 				action: 'rate_the_plugin',
 				dismiss_type: dismiss_type,
 				notice_type: notice_type,
-				cx_nonce: cdxn_mlh_script.ajx_nonce
+				eaddons_nonce: Eaddons_script.ajx_nonce
 			};
 			jQuery.ajax({
 				type: 'POST',
@@ -54,7 +54,7 @@
 				data: data,
 				success: function(response) {
 					if (response) {
-						$this.parents('.cdxn-mlh-notice').remove();
+						$this.parents('.Eaddons-mlh-notice').remove();
 					}
 				}
 			});

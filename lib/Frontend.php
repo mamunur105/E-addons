@@ -3,14 +3,14 @@
 /**
  * The public-facing functionality of the plugin.
  *
- * @link       http://codexin.com
+ * @link       https://github.com/mamunur105/E-addons
  * @since      1.0.0
  *
  * @package    PluginBoilerplate
  * @subpackage PluginBoilerplate/Frontend
  */
 
-namespace Codexin\PluginBoilerplate;
+namespace EM\Eaddons;
 
 /**
  * The public-facing functionality of the plugin.
@@ -20,7 +20,7 @@ namespace Codexin\PluginBoilerplate;
  *
  * @package    PluginBoilerplate
  * @subpackage PluginBoilerplate/Frontend
- * @author     Your Name <email@codexin.com>
+ * @author     Your Name <rmamunur105@gmail.com>
  */
 class Frontend {
 
