@@ -181,7 +181,7 @@ final class E_Addons {
 	public function init() {
 	
 		$this->i18n();
-
+		require_once( __DIR__ . '/admin/functions.php' );
 		// Add Plugin actions
 		add_action( 'elementor/widgets/widgets_registered', [ $this, 'init_widgets' ] );
 		add_action( 'elementor/controls/controls_registered', [ $this, 'init_controls' ] );
@@ -203,10 +203,12 @@ final class E_Addons {
 
 		// Include Widget files
 		require_once( __DIR__ . '/widgets/Elementor_ETitle_Widget.php' );
+		require_once( __DIR__ . '/widgets/Elementor_Post_Widget.php' );
 
-
+		$widgets_manager = \Elementor\Plugin::instance()->widgets_manager;
 		// // Register widget
-		\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new \Elementor_ETitle_Widget() );
+		$widgets_manager->register_widget_type( new \Elementor_ETitle_Widget() );
+		$widgets_manager->register_widget_type( new \Elementor_Post_Widget() );
 
 	}
 
@@ -311,15 +313,9 @@ final class E_Addons {
 				'icon' => 'fa fa-plug',
 			]
 		);
-		// $elements_manager->add_category(
-		// 	'second-category',
-		// 	[
-		// 		'title' => __( 'Second Category', 'E-Adons' ),
-		// 		'icon' => 'fa fa-plug',
-		// 	]
-		// );
 
 	}
+
 
 
 }
@@ -328,18 +324,3 @@ E_Addons::instance();
 
 
 
-add_action('wp_ajax_get_posts', function() {
-   
-	$posts = get_posts();
-
-    $response = [];
-    foreach($posts as $post){
-        $response[] = [
-            "id" => $post->ID,
-			"text" => $post->post_title,
-        ];
-    }
-
-    wp_send_json($response);
-
-});

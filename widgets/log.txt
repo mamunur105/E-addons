@@ -1,0 +1,235 @@
+Array
+(
+    [category] => WP_Taxonomy Object
+        (
+            [name] => category
+            [label] => Categories
+            [labels] => stdClass Object
+                (
+                    [name] => Categories
+                    [singular_name] => Category
+                    [search_items] => Search Categories
+                    [popular_items] => 
+                    [all_items] => All Categories
+                    [parent_item] => Parent Category
+                    [parent_item_colon] => Parent Category:
+                    [edit_item] => Edit Category
+                    [view_item] => View Category
+                    [update_item] => Update Category
+                    [add_new_item] => Add New Category
+                    [new_item_name] => New Category Name
+                    [separate_items_with_commas] => 
+                    [add_or_remove_items] => 
+                    [choose_from_most_used] => 
+                    [not_found] => No categories found.
+                    [no_terms] => No categories
+                    [filter_by_item] => Filter by category
+                    [items_list_navigation] => Categories list navigation
+                    [items_list] => Categories list
+                    [most_used] => Most Used
+                    [back_to_items] => &larr; Go to Categories
+                    [menu_name] => Categories
+                    [name_admin_bar] => category
+                )
+
+            [description] => 
+            [public] => 1
+            [publicly_queryable] => 1
+            [hierarchical] => 1
+            [show_ui] => 1
+            [show_in_menu] => 1
+            [show_in_nav_menus] => 1
+            [show_tagcloud] => 1
+            [show_in_quick_edit] => 1
+            [show_admin_column] => 1
+            [meta_box_cb] => post_categories_meta_box
+            [meta_box_sanitize_cb] => taxonomy_meta_box_sanitize_cb_checkboxes
+            [object_type] => Array
+                (
+                    [0] => post
+                )
+
+            [cap] => stdClass Object
+                (
+                    [manage_terms] => manage_categories
+                    [edit_terms] => edit_categories
+                    [delete_terms] => delete_categories
+                    [assign_terms] => assign_categories
+                )
+
+            [rewrite] => Array
+                (
+                    [with_front] => 1
+                    [hierarchical] => 1
+                    [ep_mask] => 512
+                    [slug] => category
+                )
+
+            [query_var] => category_name
+            [update_count_callback] => 
+            [show_in_rest] => 1
+            [rest_base] => categories
+            [rest_controller_class] => WP_REST_Terms_Controller
+            [rest_controller] => 
+            [default_term] => 
+            [sort] => 
+            [args] => 
+            [_builtin] => 1
+        )
+
+    [post_tag] => WP_Taxonomy Object
+        (
+            [name] => post_tag
+            [label] => Tags
+            [labels] => stdClass Object
+                (
+                    [name] => Tags
+                    [singular_name] => Tag
+                    [search_items] => Search Tags
+                    [popular_items] => Popular Tags
+                    [all_items] => All Tags
+                    [parent_item] => 
+                    [parent_item_colon] => 
+                    [edit_item] => Edit Tag
+                    [view_item] => View Tag
+                    [update_item] => Update Tag
+                    [add_new_item] => Add New Tag
+                    [new_item_name] => New Tag Name
+                    [separate_items_with_commas] => Separate tags with commas
+                    [add_or_remove_items] => Add or remove tags
+                    [choose_from_most_used] => Choose from the most used tags
+                    [not_found] => No tags found.
+                    [no_terms] => No tags
+                    [filter_by_item] => 
+                    [items_list_navigation] => Tags list navigation
+                    [items_list] => Tags list
+                    [most_used] => Most Used
+                    [back_to_items] => &larr; Go to Tags
+                    [menu_name] => Tags
+                    [name_admin_bar] => post_tag
+                )
+
+            [description] => 
+            [public] => 1
+            [publicly_queryable] => 1
+            [hierarchical] => 
+            [show_ui] => 1
+            [show_in_menu] => 1
+            [show_in_nav_menus] => 1
+            [show_tagcloud] => 1
+            [show_in_quick_edit] => 1
+            [show_admin_column] => 1
+            [meta_box_cb] => post_tags_meta_box
+            [meta_box_sanitize_cb] => taxonomy_meta_box_sanitize_cb_input
+            [object_type] => Array
+                (
+                    [0] => post
+                )
+
+            [cap] => stdClass Object
+                (
+                    [manage_terms] => manage_post_tags
+                    [edit_terms] => edit_post_tags
+                    [delete_terms] => delete_post_tags
+                    [assign_terms] => assign_post_tags
+                )
+
+            [rewrite] => Array
+                (
+                    [with_front] => 1
+                    [hierarchical] => 
+                    [ep_mask] => 1024
+                    [slug] => tag
+                )
+
+            [query_var] => tag
+            [update_count_callback] => 
+            [show_in_rest] => 1
+            [rest_base] => tags
+            [rest_controller_class] => WP_REST_Terms_Controller
+            [rest_controller] => 
+            [default_term] => 
+            [sort] => 
+            [args] => 
+            [_builtin] => 1
+        )
+
+    [post_format] => WP_Taxonomy Object
+        (
+            [name] => post_format
+            [label] => Formats
+            [labels] => stdClass Object
+                (
+                    [name] => Formats
+                    [singular_name] => Format
+                    [search_items] => Search Tags
+                    [popular_items] => Popular Tags
+                    [all_items] => Formats
+                    [parent_item] => 
+                    [parent_item_colon] => 
+                    [edit_item] => Edit Tag
+                    [view_item] => View Tag
+                    [update_item] => Update Tag
+                    [add_new_item] => Add New Tag
+                    [new_item_name] => New Tag Name
+                    [separate_items_with_commas] => Separate tags with commas
+                    [add_or_remove_items] => Add or remove tags
+                    [choose_from_most_used] => Choose from the most used tags
+                    [not_found] => No tags found.
+                    [no_terms] => No tags
+                    [filter_by_item] => 
+                    [items_list_navigation] => Tags list navigation
+                    [items_list] => Tags list
+                    [most_used] => Most Used
+                    [back_to_items] => &larr; Go to Tags
+                    [menu_name] => Formats
+                    [name_admin_bar] => Format
+                    [archives] => Formats
+                )
+
+            [description] => 
+            [public] => 1
+            [publicly_queryable] => 1
+            [hierarchical] => 
+            [show_ui] => 
+            [show_in_menu] => 
+            [show_in_nav_menus] => 1
+            [show_tagcloud] => 
+            [show_in_quick_edit] => 
+            [show_admin_column] => 
+            [meta_box_cb] => post_tags_meta_box
+            [meta_box_sanitize_cb] => taxonomy_meta_box_sanitize_cb_input
+            [object_type] => Array
+                (
+                    [0] => post
+                )
+
+            [cap] => stdClass Object
+                (
+                    [manage_terms] => manage_categories
+                    [edit_terms] => manage_categories
+                    [delete_terms] => manage_categories
+                    [assign_terms] => edit_posts
+                )
+
+            [rewrite] => Array
+                (
+                    [with_front] => 1
+                    [hierarchical] => 
+                    [ep_mask] => 0
+                    [slug] => type
+                )
+
+            [query_var] => post_format
+            [update_count_callback] => 
+            [show_in_rest] => 
+            [rest_base] => 
+            [rest_controller_class] => 
+            [rest_controller] => 
+            [default_term] => 
+            [sort] => 
+            [args] => 
+            [_builtin] => 1
+        )
+
+)
