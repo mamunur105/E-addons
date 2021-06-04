@@ -73,22 +73,10 @@ class Elementor_Post_Widget extends \Elementor\Widget_Base {
 	 * @access protected
 	 */
 	protected function _register_controls() {
-		$dd_post_Type = [] ;
-		$args = array(
-			'public'   => true,
-			'_builtin' => false
-		);
-		$post_types = get_post_types( $args, 'objects' );
-		unset( $post_types['e-landing-page'] );
-		unset( $post_types['elementor_library'] );
-		foreach( $post_types as $type){
-			$dd_post_Type[$type->name] = $type->label;
-		}
-		$dd_post_Type['post'] = __('Post', 'E-Adons' );
 
-		// $taxonomies = get_object_taxonomies( $post_types , 'objects');
+		$post_types = e_addons_get_post_types() ;
+		// $taxonomy_objects = e_addons_get_taxonomies( 'book' );
 
-		// error_log(print_r($post_types,true),3,__DIR__."/post_types.txt");
 		$this->start_controls_section(
 			'content_section',
 			[
@@ -102,19 +90,50 @@ class Elementor_Post_Widget extends \Elementor\Widget_Base {
 			[
 				'label' => __( 'Post Type', 'E-Adons' ),
 				'type' => \Elementor\Controls_Manager::SELECT2,
-				'options' => $dd_post_Type,
+				'options' => $post_types,
 				'default' => [ 'post' ],
 			]
 		);
-		$this->add_control(
-			'post_type_terms',
-			[
-				'label' => __( 'Terms', 'E-Adons' ),
-				'type' => \Elementor\Controls_Manager::SELECT2,
-				'options' => [],
-				'default' => [ 'post' ],
-			]
-		);
+
+		foreach ( $post_types as $key => $value ) {
+			$taxonomy =  e_addons_get_taxonomies( $key );
+			if ( ! $taxonomy[$key] ) continue;
+			$this->add_control(
+				'tax_type_' . $key,
+				[
+					'label' => __( 'Taxonomies', 'E-Adons' ),
+					'type' => \Elementor\Controls_Manager::SELECT,
+					'options' => $taxonomy[$key],
+					'condition' => [
+						'post_type' => $key
+					],
+				]
+			);
+
+			// foreach ( $taxonomy[$key] as $tax_key => $tax_value ) {
+
+			// 	$this->add_control(
+			// 		'tax_ids_' . $tax_key,
+			// 		[
+			// 			'label' => __( 'Select ', 'e-addons' ) . $tax_value,
+			// 			'label_block' => true,
+			// 			'type' => \Elementor\Controls_Manager::SELECT2,
+			// 			'multiple' => true,
+			// 			'sortable' => true,
+			// 			'placeholder' => 'Search ' . $tax_value,
+			// 			'dynamic_params' => [
+			// 				'term_taxonomy' => $tax_key,
+			// 				'object_type'   => 'term'
+			// 			],
+			// 			'condition' => [
+			// 				'post_type' => $key,
+			// 				'tax_type_' . $key => $tax_key
+			// 			],
+			// 		]
+			// 	);
+			// }
+		}
+
 		$this->add_control(
 			'posts_per_page',
 			[

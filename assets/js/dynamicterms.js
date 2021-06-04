@@ -1,8 +1,9 @@
 jQuery( window ).on( 'elementor:init', function() {
 var emojioneareaItemView = elementor.modules.controls.BaseData.extend({
     onReady: function () {
-        this.control_select = this.$el.find('.post-select');
-        // this.save_input = this.$el.find('.post-select-save-value');
+		this.post_type = this.$el.find('.terms-select');
+        this.control_select = this.$el.find('.terms-select');
+        // this.save_input = this.$el.find('.terms-select-save-value');
 		this.control_select.select2({
             ajax: {
                 url: 'http://dev.local/wp-admin/admin-ajax.php?action=get_posts',
@@ -18,6 +19,7 @@ var emojioneareaItemView = elementor.modules.controls.BaseData.extend({
         this.control_select.on('change', () => {
             this.saveValue();
         } )
+		console.log( post_type );
 
     },
 
@@ -32,6 +34,6 @@ var emojioneareaItemView = elementor.modules.controls.BaseData.extend({
     }
 });
 
-elementor.addControlView('selectControl', emojioneareaItemView);
+elementor.addControlView('dynamicterms', emojioneareaItemView);
 
 });
