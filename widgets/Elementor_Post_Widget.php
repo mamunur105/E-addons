@@ -104,7 +104,6 @@ class Elementor_Post_Widget extends \Elementor\Widget_Base {
 				'type' => \Elementor\Controls_Manager::SELECT2,
 				'options' => $dd_post_Type,
 				'default' => [ 'post' ],
-				
 			]
 		);
 		$this->add_control(

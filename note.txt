@@ -1,0 +1,5 @@
+Hooks
+// add_filter('e-addons-post-content', function( $content, $post ){
+// 	// '<hr/>'.$post->ID;
+// 	return $content;
+// }, 10, 2);
