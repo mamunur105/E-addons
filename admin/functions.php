@@ -27,7 +27,6 @@ function e_addons_get_taxonomies ( $post_type = '' ) {
         }
         $taxonomies[ $post_type ] = $temp;
     }
-    // error_log(print_r($taxonomies,true),3,__DIR__."/taxonomies-log.txt");
 	return $taxonomies;
 }
 
@@ -50,3 +49,21 @@ function e_addons_get_post_types () {
     return $dd_post_Type;
 }
 
+/**
+ * Terms List by texonomy
+ */
+function e_addons_get_terms_list( $taxonomy_name ){
+    $term_list = array();
+    $temp = array();
+    $taxonomies = get_terms( array(
+        'taxonomy' => $taxonomy_name,
+        'hide_empty' => false
+    ) );
+    if ( ! empty( $taxonomies ) && ! is_wp_error( $taxonomies ) ) {
+        foreach ($taxonomies as $key => $value) {
+            $temp[$value->name] = $value->name;
+        }
+    }
+    $term_list[$taxonomy_name] = $temp;
+    return $term_list;
+}

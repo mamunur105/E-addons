@@ -1,0 +1,66 @@
+Array
+(
+    [genre] => Genre
+    [genre2] => Genre2
+)
+Array
+(
+    [category] => Categories
+    [post_tag] => Tags
+    [post_format] => Formats
+)
+Array
+(
+    [genre] => Genre
+    [genre2] => Genre2
+)
+Array
+(
+    [category] => Categories
+    [post_tag] => Tags
+    [post_format] => Formats
+)
+Array
+(
+    [genre] => Genre
+    [genre2] => Genre2
+)
+Array
+(
+    [category] => Categories
+    [post_tag] => Tags
+    [post_format] => Formats
+)
+Array
+(
+    [genre] => Genre
+    [genre2] => Genre2
+)
+Array
+(
+    [category] => Categories
+    [post_tag] => Tags
+    [post_format] => Formats
+)
+Array
+(
+    [genre] => Genre
+    [genre2] => Genre2
+)
+Array
+(
+    [category] => Categories
+    [post_tag] => Tags
+    [post_format] => Formats
+)
+Array
+(
+    [genre] => Genre
+    [genre2] => Genre2
+)
+Array
+(
+    [category] => Categories
+    [post_tag] => Tags
+    [post_format] => Formats
+)

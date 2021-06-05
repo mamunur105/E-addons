@@ -104,34 +104,33 @@ class Elementor_Post_Widget extends \Elementor\Widget_Base {
 					'label' => __( 'Taxonomies', 'E-Adons' ),
 					'type' => \Elementor\Controls_Manager::SELECT,
 					'options' => $taxonomy[$key],
+					'default' => [ ],
 					'condition' => [
 						'post_type' => $key
 					],
 				]
 			);
+			foreach ( $taxonomy[$key] as $tax_key => $tax_value ) {
+				$temrs = e_addons_get_terms_list( $tax_key ) ;
+				$this->add_control(
+					'tax_ids_' . $tax_key,
+					[
+						'label' => __( 'Select ', 'e-addons' ) . $tax_value,
+						'label_block' => true,
+						'type' => \Elementor\Controls_Manager::SELECT2,
+						'multiple' => true,
+						'sortable' => true,
+						'placeholder' => 'Search ' . $tax_value,
+						'options' => $temrs[$tax_key] ,
+						'condition' => [
+							'post_type' => $key,
+							'tax_type_' . $key => $tax_key
+						],
+					]
+				);
 
-			// foreach ( $taxonomy[$key] as $tax_key => $tax_value ) {
+			}
 
-			// 	$this->add_control(
-			// 		'tax_ids_' . $tax_key,
-			// 		[
-			// 			'label' => __( 'Select ', 'e-addons' ) . $tax_value,
-			// 			'label_block' => true,
-			// 			'type' => \Elementor\Controls_Manager::SELECT2,
-			// 			'multiple' => true,
-			// 			'sortable' => true,
-			// 			'placeholder' => 'Search ' . $tax_value,
-			// 			'dynamic_params' => [
-			// 				'term_taxonomy' => $tax_key,
-			// 				'object_type'   => 'term'
-			// 			],
-			// 			'condition' => [
-			// 				'post_type' => $key,
-			// 				'tax_type_' . $key => $tax_key
-			// 			],
-			// 		]
-			// 	);
-			// }
 		}
 
 		$this->add_control(
