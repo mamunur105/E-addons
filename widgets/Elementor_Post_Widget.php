@@ -121,7 +121,11 @@ class Elementor_Post_Widget extends \Elementor\Widget_Base {
 						'multiple' => true,
 						'sortable' => true,
 						'placeholder' => 'Search ' . $tax_value,
-						'options' => $temrs[$tax_key] ,
+						// 'options' => $temrs[$tax_key] ,
+						'dynamic_params' => [
+							'term_taxonomy' => $tax_key,
+							'object_type'   => 'term'
+						],
 						'condition' => [
 							'post_type' => $key,
 							'tax_type_' . $key => $tax_key
