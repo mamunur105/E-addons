@@ -12,6 +12,26 @@ add_action('wp_ajax_get_posts', function() {
     wp_send_json($response);
 });
 
+add_action('wp_ajax_get_terms_list', function() {
+    $tax_name = $_GET['tax_name'];
+    $terms = get_terms( array(
+        'taxonomy' =>  $tax_name,
+        'hide_empty' => false,
+    ) );
+    $response = [];
+    if ( ! empty( $terms ) && ! is_wp_error( $terms ) ) {
+        foreach($terms as $term){
+            $response[] = [
+                "id" => $term->slug,
+                "text" => $term->name,
+            ];
+        }
+    }
+    wp_send_json($response);
+});
+
+
+
 /**
  * Get a list of Taxonomy
  *

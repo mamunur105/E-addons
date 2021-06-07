@@ -102,30 +102,31 @@ class Elementor_Post_Widget extends \Elementor\Widget_Base {
 				'tax_type_' . $key,
 				[
 					'label' => __( 'Taxonomies', 'E-Adons' ),
-					'type' => \Elementor\Controls_Manager::SELECT,
+					'type' => \Elementor\Controls_Manager::SELECT2,
 					'options' => $taxonomy[$key],
 					'default' => [ ],
+					'multiple' => true,
 					'condition' => [
 						'post_type' => $key
 					],
 				]
 			);
 			foreach ( $taxonomy[$key] as $tax_key => $tax_value ) {
-				$temrs = e_addons_get_terms_list( $tax_key ) ;
+				// $temrs = e_addons_get_terms_list( $tax_key ) ;
 				$this->add_control(
 					'tax_ids_' . $tax_key,
 					[
 						'label' => __( 'Select ', 'e-addons' ) . $tax_value,
 						'label_block' => true,
-						'type' => \Elementor\Controls_Manager::SELECT2,
+						'type' => 'dynamicterms',
 						'multiple' => true,
 						'sortable' => true,
 						'placeholder' => 'Search ' . $tax_value,
-						// 'options' => $temrs[$tax_key] ,
 						'dynamic_params' => [
 							'term_taxonomy' => $tax_key,
 							'object_type'   => 'term'
 						],
+						'default' => [ ],
 						'condition' => [
 							'post_type' => $key,
 							'tax_type_' . $key => $tax_key

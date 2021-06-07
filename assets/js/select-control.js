@@ -22,7 +22,8 @@ var emojioneareaItemView = elementor.modules.controls.BaseData.extend({
     },
 
     saveValue: function() {
-        this.setValue(this.control_select.val());
+        // console.log( this.control_select.val() );
+        this.setValue(this.control_select.val() );
     },
 
     onBeforeDestroy: function() {

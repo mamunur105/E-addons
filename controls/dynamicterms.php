@@ -69,7 +69,7 @@ class Dnamicterms_Controller extends \Elementor\Base_Control {
 		?>
 		<div>
 			<label class="elementor-control-title"> {{{ data.label }}} </label>
-			<select class="terms-select" name="" id="">
+			<select class="terms-select" name="" id="" sortable="{{{ data.sortable }}}" multiple="{{{ data.multiple }}}" >
 				<option value="{{ data.name }}" selected="selected"> </option>
 			</select>
 			<!-- <input type="hidden" class="terms-select-save-value" data-setting="{{ data.name }}"> -->
