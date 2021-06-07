@@ -73,10 +73,7 @@ class Elementor_Post_Widget extends \Elementor\Widget_Base {
 	 * @access protected
 	 */
 	protected function _register_controls() {
-
 		$post_types = e_addons_get_post_types() ;
-		// $taxonomy_objects = e_addons_get_taxonomies( 'book' );
-
 		$this->start_controls_section(
 			'content_section',
 			[
@@ -112,20 +109,17 @@ class Elementor_Post_Widget extends \Elementor\Widget_Base {
 				]
 			);
 			foreach ( $taxonomy[$key] as $tax_key => $tax_value ) {
-				// $temrs = e_addons_get_terms_list( $tax_key ) ;
+				$temrs = e_addons_get_terms_list( $tax_key ) ;
 				$this->add_control(
 					'tax_ids_' . $tax_key,
 					[
 						'label' => __( 'Select ', 'e-addons' ) . $tax_value,
 						'label_block' => true,
-						'type' => 'dynamicterms',
+						'type' => \Elementor\Controls_Manager::SELECT2,
 						'multiple' => true,
+						'options' => $temrs[$tax_key],
 						'sortable' => true,
 						'placeholder' => 'Search ' . $tax_value,
-						'dynamic_params' => [
-							'term_taxonomy' => $tax_key,
-							'object_type'   => 'term'
-						],
 						'default' => [ ],
 						'condition' => [
 							'post_type' => $key,
@@ -170,45 +164,33 @@ class Elementor_Post_Widget extends \Elementor\Widget_Base {
 	protected function render() {
 
 		$settings = $this->get_settings_for_display();
+		
 		echo '<div class="e-addons-post">';
 			if( isset( $settings['post_type'] ) ){
 				$post_types = $settings['post_type'];
 				$posts_per_page = $settings['posts_per_page'];
+				// error_log(print_r($post_types,true),3,__DIR__."/log.txt");
+				$taxonomy = $settings['tax_type_' . $post_types];
+				// $terms_ids = $settings['tax_ids_' . $taxonomy];
+				// error_log(print_r($taxonomy,true),3,__DIR__."/log.txt");
+
 				$the_args = array(
 					'post_type' => $post_types,
-					'posts_per_page' => $posts_per_page
-					// 'tax_query' => array(
-					// 	array(
-					// 		'taxonomy' => 'category',
-					// 		'terms' => $category_slug,
-					// 		'field' => 'slug',
-					// 		'operator' => 'IN',
-					// 	)
-					// ),
-					// 'meta_query' => array(
-					// 	'relation' => 'OR',
-					// 	array(
-					// 		'key'     => 'presenters_people',
-					// 		'value'   => $post->ID,
-					// 		'compare' => 'LIKE'
-					// 	),
-					// 	array(
-					// 		'key'     => 'author',
-					// 		'value'   => $post->ID,
-					// 		'compare' => 'LIKE'
-					// 	)
-					// )
+					'posts_per_page' => $posts_per_page,
+					'tax_query' => array(
+						'relation' => 'OR',
+					)
 				);
-				// $the_args['tax_query'] = array(
-				// 	array(
-				// 		'taxonomy' => 'category',
-				// 		'terms' => $category_slug,
-				// 		'field' => 'slug',
-				// 		'operator' => 'IN',
-				// 	)
-				// );
+				foreach ($taxonomy as $value) {
+					$taxonomy_terms = $settings['tax_ids_' . $value];
+						$the_args['tax_query'][] = array(
+							'taxonomy' => $value,
+							'terms' => $taxonomy_terms,
+							'field' => 'slug',
+							'operator' => 'IN',
+						);
+				}
 				$the_query = new WP_Query($the_args);
-				// The Loop
 				if ( $the_query->have_posts() ) {
 					while ( $the_query->have_posts() ) { $the_query->the_post();
 						include plugin_dir_path( __DIR__ ).'/template-parts/post-content.php';

@@ -222,14 +222,14 @@ final class E_Addons {
 	 * @access public
 	 */
 	public function init_controls() {
-		require_once( __DIR__ . '/controls/dynamicterms.php' );
+		// require_once( __DIR__ . '/controls/dynamicterms.php' );
 		require_once( __DIR__ . '/controls/Select_Controller.php' );
 		require_once( __DIR__ . '/controls/emojionearea-control.php' );
 		$controls_manager = \Elementor\Plugin::$instance->controls_manager;
 		// Register control
 		$controls_manager->register_control( 'selectControl', new \Select_Controller() );
 		$controls_manager->register_control( 'emojionearea', new \EmojiOneArea_Control() );
-		$controls_manager->register_control( 'dynamicterms', new \Dnamicterms_Controller() );
+		// $controls_manager->register_control( 'dynamicterms', new \Dnamicterms_Controller() );
 	}
 
 	/**
