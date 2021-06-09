@@ -86,12 +86,25 @@ class Elementor_Post_Widget extends \Elementor\Widget_Base {
 			'post_type',
 			[
 				'label' => __( 'Post Type', 'E-Adons' ),
-				'type' => \Elementor\Controls_Manager::SELECT2,
+				'type' => \Elementor\Controls_Manager::SELECT,
 				'options' => $post_types,
-				'default' => [ 'post' ],
+				'default' => 'post',
+				'multiple' => false,
 			]
 		);
-
+		$this->add_control(
+			'tax_relation',
+			[
+				'label' => __( 'Taxonomy Relation', 'E-Adons' ),
+				'type' => \Elementor\Controls_Manager::SELECT,
+				'options' => array(
+					'AND' => 'AND',
+					'OR' => 'OR'
+				),
+				'default' => 'OR',
+				'multiple' => false,
+			]
+		);
 		foreach ( $post_types as $key => $value ) {
 			$taxonomy =  e_addons_get_taxonomies( $key );
 			if ( ! $taxonomy[$key] ) continue;
@@ -166,21 +179,20 @@ class Elementor_Post_Widget extends \Elementor\Widget_Base {
 		$settings = $this->get_settings_for_display();
 		
 		echo '<div class="e-addons-post">';
-			if( isset( $settings['post_type'] ) ){
-				$post_types = $settings['post_type'];
+				print_r( $settings['post_type'] );
+			if( isset( $settings['post_type'] ) && !empty( $settings['post_type'] ) ){
+				$post_type = $settings['post_type'];
+				$tax_relation = $settings['tax_relation'];
 				$posts_per_page = $settings['posts_per_page'];
-				// error_log(print_r($post_types,true),3,__DIR__."/log.txt");
-				$taxonomy = $settings['tax_type_' . $post_types];
-				// $terms_ids = $settings['tax_ids_' . $taxonomy];
-				// error_log(print_r($taxonomy,true),3,__DIR__."/log.txt");
-
+				$taxonomy = $settings['tax_type_' . $post_type];
+				$pass_term = array();
 				$the_args = array(
-					'post_type' => $post_types,
+					'post_type' => $post_type,
 					'posts_per_page' => $posts_per_page,
-					'tax_query' => array(
-						'relation' => 'OR',
-					)
+					'tax_query' => array()
 				);
+				$the_args['tax_query']['relation'] = $tax_relation;
+
 				foreach ($taxonomy as $value) {
 					$taxonomy_terms = $settings['tax_ids_' . $value];
 						$the_args['tax_query'][] = array(
@@ -189,7 +201,12 @@ class Elementor_Post_Widget extends \Elementor\Widget_Base {
 							'field' => 'slug',
 							'operator' => 'IN',
 						);
+					$pass_term[$value] = $taxonomy_terms;
 				}
+				
+				// echo '<pre>';
+				// print_r( $the_args );
+				// echo '</pre>';
 				$the_query = new WP_Query($the_args);
 				if ( $the_query->have_posts() ) {
 					while ( $the_query->have_posts() ) { $the_query->the_post();

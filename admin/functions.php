@@ -81,7 +81,7 @@ function e_addons_get_terms_list( $taxonomy_name ){
     ) );
     if ( ! empty( $taxonomies ) && ! is_wp_error( $taxonomies ) ) {
         foreach ($taxonomies as $key => $value) {
-            $temp[$value->name] = $value->name;
+            $temp[$value->slug] = $value->name;
         }
     }
     $term_list[$taxonomy_name] = $temp;
