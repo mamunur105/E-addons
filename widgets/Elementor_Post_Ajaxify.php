@@ -33,7 +33,7 @@ class Elementor_Post_Ajaxify extends \Elementor\Widget_Base {
 	 * @return string Widget title.
 	 */
 	public function get_title() {
-		return __( 'E Posts Ajaxify', 'E-Adons' );
+		return __( 'E Posts Ajaxify (Not compleate )', 'E-Adons' );
 	}
 
 	/**
@@ -121,26 +121,31 @@ class Elementor_Post_Ajaxify extends \Elementor\Widget_Base {
 					],
 				]
 			);
-			// foreach ( $taxonomy[$key] as $tax_key => $tax_value ) {
-			// 	// $temrs = e_addons_get_terms_list( $tax_key ) ;
-			// 	$this->add_control(
-			// 		'tax_ids_' . $tax_key,
-			// 		[
-			// 			'label' => __( 'Select ', 'e-addons' ) . $tax_value,
-			// 			'label_block' => true,
-			// 			'type' => 'dynamicterms',
-			// 			'multiple' => true,
-			// 			'sortable' => true,
-			// 			'placeholder' => 'Search ' . $tax_value,
-			// 			'default' => [ ],
-			// 			'dynamic_params' => [
-			// 				'post_type' => $key,
-			// 				'tax_type_' . $key => $tax_key
-			// 			],
-			// 		]
-			// 	);
+			// error_log(print_r( $taxonomy[$key],true),3,__DIR__."/log.txt");
+			foreach ( $taxonomy[$key] as $tax_key => $tax_value ) {
 
-			// }
+				$this->add_control(
+					'tax_ids_' . $tax_key,
+					[
+						'label' => __( 'Select ', 'E-Adons' ) . $tax_value,
+						'label_block' => true,
+						'type' => 'dynamicterms',
+						'multiple' => true,
+						'sortable' => true,
+						'placeholder' => 'Search ' . $tax_value,
+						'dynamic_params' => [
+							'term_taxonomy' => $tax_key,
+							'object_type'   => 'term'
+						],
+						'condition' => [
+							'post_type' => $key,
+							'tax_type_' . $key => $tax_key
+						],
+					]
+				);
+
+
+			}
 
 		}
 
@@ -182,25 +187,33 @@ class Elementor_Post_Ajaxify extends \Elementor\Widget_Base {
 				$tax_relation = $settings['tax_relation'];
 				$posts_per_page = $settings['posts_per_page'];
 				$taxonomy = $settings['tax_type_' . $post_type];
-				$pass_term = array();
+				// $pass_term = array();
 				$the_args = array(
 					'post_type' => $post_type,
 					'posts_per_page' => $posts_per_page,
 					'tax_query' => array()
 				);
 				$the_args['tax_query']['relation'] = $tax_relation;
-
+				foreach ($taxonomy as $value) {
+					$taxonomy_terms = $settings['tax_ids_' . $value];
+						$the_args['tax_query'][] = array(
+							'taxonomy' => $value,
+							'terms' => $taxonomy_terms,
+							'field' => 'slug',
+							'operator' => 'IN',
+						);
+					// $pass_term[$value] = $taxonomy_terms;
+				}
 				$the_query = new WP_Query($the_args);
 				if ( $the_query->have_posts() ) {
 					while ( $the_query->have_posts() ) { $the_query->the_post();
 						ob_start();
-							// print_r( $pass_term );
-							foreach ( $pass_term as $key => $term) {
-								$term_obj_list = get_the_terms( get_the_ID() , $key );
+							foreach ( $taxonomy as $term) {
+								$term_obj_list = get_the_terms( get_the_ID() , $term );
 								if ( ! empty( $term_obj_list ) && ! is_wp_error( $term_obj_list ) ) {
 									$terms_string = join(', ', wp_list_pluck( $term_obj_list, 'name') );
 									?>
-										<div class="term-list term-key-<?php echo $key; ?>"> <?php  echo $key .' => '. $terms_string ; ?> </div>
+										<div class="term-list term-key-<?php echo $term; ?>"> <?php  echo $term .' => '. $terms_string ; ?> </div>
 									<?php
 								}
 							}
