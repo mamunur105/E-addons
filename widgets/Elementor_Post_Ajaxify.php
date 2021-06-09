@@ -6,7 +6,7 @@
  *
  * @since 1.0.0
  */
-class Elementor_Post_Widget extends \Elementor\Widget_Base {
+class Elementor_Post_Ajaxify extends \Elementor\Widget_Base {
 
 	/**
 	 * Get widget name.
@@ -19,7 +19,7 @@ class Elementor_Post_Widget extends \Elementor\Widget_Base {
 	 * @return string Widget name.
 	 */
 	public function get_name() {
-		return 'e-addons-blogpost';
+		return 'e-addons-blogpost-jaxify';
 	}
 
 	/**
@@ -33,7 +33,7 @@ class Elementor_Post_Widget extends \Elementor\Widget_Base {
 	 * @return string Widget title.
 	 */
 	public function get_title() {
-		return __( 'E Posts', 'E-Adons' );
+		return __( 'E Posts Ajaxify', 'E-Adons' );
 	}
 
 	/**
@@ -121,27 +121,26 @@ class Elementor_Post_Widget extends \Elementor\Widget_Base {
 					],
 				]
 			);
-			foreach ( $taxonomy[$key] as $tax_key => $tax_value ) {
-				$temrs = e_addons_get_terms_list( $tax_key ) ;
-				$this->add_control(
-					'tax_ids_' . $tax_key,
-					[
-						'label' => __( 'Select ', 'e-addons' ) . $tax_value,
-						'label_block' => true,
-						'type' => \Elementor\Controls_Manager::SELECT2,
-						'multiple' => true,
-						'options' => $temrs[$tax_key],
-						'sortable' => true,
-						'placeholder' => 'Search ' . $tax_value,
-						'default' => [ ],
-						'condition' => [
-							'post_type' => $key,
-							'tax_type_' . $key => $tax_key
-						],
-					]
-				);
+			// foreach ( $taxonomy[$key] as $tax_key => $tax_value ) {
+			// 	// $temrs = e_addons_get_terms_list( $tax_key ) ;
+			// 	$this->add_control(
+			// 		'tax_ids_' . $tax_key,
+			// 		[
+			// 			'label' => __( 'Select ', 'e-addons' ) . $tax_value,
+			// 			'label_block' => true,
+			// 			'type' => 'dynamicterms',
+			// 			'multiple' => true,
+			// 			'sortable' => true,
+			// 			'placeholder' => 'Search ' . $tax_value,
+			// 			'default' => [ ],
+			// 			'dynamic_params' => [
+			// 				'post_type' => $key,
+			// 				'tax_type_' . $key => $tax_key
+			// 			],
+			// 		]
+			// 	);
 
-			}
+			// }
 
 		}
 
@@ -177,7 +176,6 @@ class Elementor_Post_Widget extends \Elementor\Widget_Base {
 	protected function render() {
 
 		$settings = $this->get_settings_for_display();
-		
 		echo '<div class="e-addons-post">';
 			if( isset( $settings['post_type'] ) && !empty( $settings['post_type'] ) ){
 				$post_type = $settings['post_type'];
@@ -192,29 +190,28 @@ class Elementor_Post_Widget extends \Elementor\Widget_Base {
 				);
 				$the_args['tax_query']['relation'] = $tax_relation;
 
-				foreach ($taxonomy as $value) {
-					$taxonomy_terms = $settings['tax_ids_' . $value];
-						$the_args['tax_query'][] = array(
-							'taxonomy' => $value,
-							'terms' => $taxonomy_terms,
-							'field' => 'slug',
-							'operator' => 'IN',
-						);
-					$pass_term[$value] = $taxonomy_terms;
-				}
-				
-				// echo '<pre>';
-				// print_r( $the_args );
-				// echo '</pre>';
 				$the_query = new WP_Query($the_args);
 				if ( $the_query->have_posts() ) {
 					while ( $the_query->have_posts() ) { $the_query->the_post();
-						include plugin_dir_path( __DIR__ ).'/template-parts/post-content.php';
+						ob_start();
+							// print_r( $pass_term );
+							foreach ( $pass_term as $key => $term) {
+								$term_obj_list = get_the_terms( get_the_ID() , $key );
+								if ( ! empty( $term_obj_list ) && ! is_wp_error( $term_obj_list ) ) {
+									$terms_string = join(', ', wp_list_pluck( $term_obj_list, 'name') );
+									?>
+										<div class="term-list term-key-<?php echo $key; ?>"> <?php  echo $key .' => '. $terms_string ; ?> </div>
+									<?php
+								}
+							}
+							echo "<hr />";
+						$post_terms_string = ob_get_clean();
+						echo $post_terms_string ;
+
 					}
 				} else { ?>
 					<div class="not-found-post"> <?php echo $settings['not_found_message']; ?> </div>
 				<?php }
-				// Restore original Post Data
 				wp_reset_postdata();
 			}
 		echo '</div>';
