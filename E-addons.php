@@ -205,12 +205,16 @@ final class E_Addons {
 		require_once( __DIR__ . '/widgets/Elementor_ETitle_Widget.php' );
 		require_once( __DIR__ . '/widgets/Elementor_Post_Widget.php' );
 		require_once( __DIR__ . '/widgets/Elementor_Post_Ajaxify.php' );
+		require_once( __DIR__ . '/widgets/Eaddons_Icon_Box.php' );
+		require_once( __DIR__ . '/widgets/Eaddons_Button_Box.php' );
 
 		$widgets_manager = \Elementor\Plugin::instance()->widgets_manager;
 		// // Register widget
 		$widgets_manager->register_widget_type( new \Elementor_ETitle_Widget() );
 		$widgets_manager->register_widget_type( new \Elementor_Post_Widget() );
 		$widgets_manager->register_widget_type( new \Elementor_Post_Ajaxify() );
+		$widgets_manager->register_widget_type( new \Eaddons_Icon_Box() );
+		$widgets_manager->register_widget_type( new \Eaddons_Button_Box() );
 
 	}
 
