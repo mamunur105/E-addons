@@ -226,6 +226,37 @@ class Eaddons_Button_Box extends Widget_Base {
 				'label_block' => false,
 			]
 		);
+		$this->add_control(
+			'button_icon_align',
+			[
+				'label' => __( 'Icon Position', 'elementor' ),
+				'type' => Controls_Manager::SELECT,
+				'default' => 'left',
+				'options' => [
+					'left' => __( 'Before', 'elementor' ),
+					'right' => __( 'After', 'elementor' ),
+				],
+				'condition' => [
+					'button_selected_icon[value]!' => '',
+				],
+			]
+		);
+		$this->add_control(
+			'button_icon_indent',
+			[
+				'label' => __( 'Icon Spacing', 'elementor' ),
+				'type' => Controls_Manager::SLIDER,
+				'range' => [
+					'px' => [
+						'max' => 50,
+					],
+				],
+				'selectors' => [
+					'{{WRAPPER}} .elementor-button .elementor-align-icon-right' => 'margin-left: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .elementor-button .elementor-align-icon-left' => 'margin-right: {{SIZE}}{{UNIT}};',
+				],
+			]
+		);
 		$this->end_controls_section();
 	}
 
@@ -264,11 +295,12 @@ class Eaddons_Button_Box extends Widget_Base {
 		?>
 		<div <?php echo $this->get_render_attribute_string( 'wrapper' ); ?>>
 			<a <?php echo $this->get_render_attribute_string( 'button' ); ?>>
-				<?php echo $settings['button_text']; // $this->render_text();  ?>
+				<?php $this->render_text();  ?>
 			</a>
 		</div>
 		<?php
 	}
+
 
 	/**
 	 * Render button widget output in the editor.
@@ -278,9 +310,27 @@ class Eaddons_Button_Box extends Widget_Base {
 	 * @since 2.9.0
 	 * @access protected
 	 */
-	// protected function content_template() {
+	protected function content_template() {
+		?>
+		<#
+		view.addRenderAttribute( 'text', 'class', 'elementor-button-text' );
+		view.addInlineEditingAttributes( 'text', 'none' );
 
-	// }
+		#>
+		<div class="elementor-button-wrapper">
+			<a id="{{ settings.button_css_id }}" class="elementor-button elementor-size-{{ settings.button_size }} elementor-animation-" href="{{ settings.button_link.url }}" role="button">
+				<span class="elementor-button-content-wrapper">
+					<# if ( settings.button_selected_icon.value ) { #>
+					<span class="elementor-button-icon elementor-align-icon-{{ settings.button_icon_align }}">
+						<i class="{{ settings.button_selected_icon.value }}" aria-hidden="true"></i>
+					</span>
+					<# } #>
+					<span {{{ view.getRenderAttributeString( 'text' ) }}}>{{{ settings.button_text }}}</span>
+				</span>
+			</a>
+		</div>
+		<?php
+	}
 
 	/**
 	 * Render button text.
@@ -290,9 +340,39 @@ class Eaddons_Button_Box extends Widget_Base {
 	 * @since 1.5.0
 	 * @access protected
 	 */
-	// protected function render_text() {
+	protected function render_text() {
+		$settings = $this->get_settings_for_display();
+		$this->add_render_attribute( [
+			'content-wrapper' => [
+				'class' => 'elementor-button-content-wrapper',
+			],
+			'icon-align' => [
+				'class' => [
+					'elementor-button-icon',
+					'elementor-align-icon-' . $settings['button_icon_align'],
+				],
+			],
+			'text' => [
+				'class' => 'elementor-button-text',
+			],
+		] );
 
+		$this->add_inline_editing_attributes( 'text', 'none' );
+
+		?>
+		<span <?php echo $this->get_render_attribute_string( 'content-wrapper' ); ?>>
+			<?php if ( ! empty( $settings['button_selected_icon']['value'] ) ) : ?>
+			<span <?php echo $this->get_render_attribute_string( 'icon-align' ); ?>>
+				<i class="<?php echo esc_attr( $settings['button_selected_icon']['value'] ); ?>" aria-hidden="true"></i>
+			</span>
+			<?php endif; ?>
+			<span <?php echo $this->get_render_attribute_string( 'text' ); ?>><?php echo $settings['button_text']; ?></span>
+		</span>
+		<?php
+	}
+
+	// public function on_import( $element ) {
+	// 	return Icons_Manager::on_import_migration( $element, 'icon', 'button_selected_icon' );
 	// }
-
 
 }

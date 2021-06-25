@@ -1,0 +1,5 @@
+Array
+(
+    [value] => far fa-arrow-alt-circle-up
+    [library] => fa-regular
+)
